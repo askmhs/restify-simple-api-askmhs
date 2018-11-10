@@ -25,6 +25,7 @@ require('dotenv').config();
 /**
  * Connecting to DB
  */
+mongoose.set('useFindAndModify', false);
 mongoose.connect(process.env.DB_HOST, {
 	useNewUrlParser: true
 }).then(() => {
