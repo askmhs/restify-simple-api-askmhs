@@ -18,11 +18,6 @@ server.use(restify.plugins.queryParser());
 server.use(restify.plugins.bodyParser());
 
 /**
- * Set mongoose default promise
- */
-mongoose.Promise = global.Promise;
-
-/**
  * Read the .env file
  */
 require('dotenv').config();
@@ -31,10 +26,10 @@ require('dotenv').config();
  * Connecting to DB
  */
 mongoose.connect(process.env.DB_HOST, {
-    useMongoClient: true
+	useNewUrlParser: true
 }).then(() => {
     console.log("Successfully connected to DB!");
-}, (err) => {
+}, err => {
     console.log("An error occurred while connecting to DB!");
     throw new Error(err);
 });
