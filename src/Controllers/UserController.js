@@ -1,4 +1,4 @@
-import User from "./../Models.User.model";
+import User from "./../Models/User.model";
 import { NotFoundException } from "./../Exceptions/NotFoundException";
 
 export class UserController {
@@ -12,14 +12,14 @@ export class UserController {
 	}
 
 	async detail(id) {
-		return User.findById(id).then(user => {
+		return User.findById(id).lean().then(user => {
 			if (user !== null) {
 				return user;
 			}
 
-			throw new Error("Couldn't find user data!");
+			throw new NotFoundException("The data you're looking for couldn't be found!");
 		}).catch(error => {
-			throw user;
+			throw error;
 		});
 	}
 
@@ -32,7 +32,7 @@ export class UserController {
 	}
 
 	async update(id, data) {
-		return User.findByIdAndUpdate($id, {
+		return User.findByIdAndUpdate(id, {
 			$set: data
 		}, {
 			new: true // This would return update data
