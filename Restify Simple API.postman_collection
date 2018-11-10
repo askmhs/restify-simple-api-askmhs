@@ -1,0 +1,99 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Restify Simple API",
+		"_postman_id": "92269d0d-ee62-df81-41f9-f4e5c7a4d94e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"description": "",
+			"item": [
+				{
+					"name": "Get All User",
+					"request": {
+						"url": "localhost:3000/user",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Detail User",
+					"request": {
+						"url": "localhost:3000/user/5be6cac6b1f8e20d4566f7a2",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create New User",
+					"request": {
+						"url": "localhost:3000/user",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Muhammad Harits Syaifulloh\",\n\t\"phone\": \"+6281234567890\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"url": "localhost:3000/user/5be6cac6b1f8e20d4566f7a2",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Muhammad Harits S\",\n\t\"phone\": \"+6281234567890\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Remove User",
+					"request": {
+						"url": "localhost:3000/user/5be6cb233e6cfa0d521e9ceb",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Muhammad Harits Syaifulloh\",\n\t\"phone\": \"+6281234567890\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
