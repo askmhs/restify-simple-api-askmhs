@@ -2,11 +2,13 @@
 * @Author: Muhammad Harits Syaifulloh
 * @Date:   2018-11-10 23:58:08
 * @Last Modified by:   Muhammad Harits Syaifulloh
-* @Last Modified time: 2018-11-11 00:00:56
+* @Last Modified time: 2018-11-11 17:18:49
 */
 
 import {UserController} from "../../src/Controllers/UserController";
 import should from "should";
+import assert from "assert";
+import {NotFoundException} from "../../src/Exceptions/NotFoundException";
 
 describe("USER CONTROLLER TEST", () => {
 
@@ -49,6 +51,32 @@ describe("USER CONTROLLER TEST", () => {
             should(createdUser.phone).deepEqual(dummyData.phone);
             done();
         });
+
+        it('should throws an error if name was not filled', async done => {
+            const result = new UserController().store({
+                phone: "+6281234567890"
+            }).catch(() => {
+            });
+
+            assert.throws(() => {
+                throw new Error("User validation failed: name: Path `name` is required.");
+            }, result);
+
+            done();
+        });
+
+        it('should throws an error if phone was not filled', async done => {
+            const result = new UserController().store({
+                name: "This is dummy name"
+            }).catch(() => {
+            });
+
+            assert.throws(() => {
+                throw new Error("User validation failed: name: Path `name` is required.");
+            }, result);
+
+            done();
+        });
     });
 
     describe("Update user data", () => {
@@ -75,6 +103,16 @@ describe("USER CONTROLLER TEST", () => {
             should(updatedData.name).deepEqual(newData.name);
             done();
         });
+
+        it('should throws NotFoundException if the data couldn\'t be found', done => {
+            const result = new UserController().update("5b86bf18eca66b4253989d2c", newData).catch(() => {
+            });
+
+            assert.throws(() => {
+                throw new NotFoundException("The data you're looking for couldn't be found!");
+            }, result);
+            done();
+        });
     });
 
     describe("Get list user", () => {
@@ -98,6 +136,16 @@ describe("USER CONTROLLER TEST", () => {
                 should(user).have.property("name").which.is.a.String();
                 should(user).have.property("phone").which.is.a.String();
             });
+            done();
+        });
+
+        it('should throws an error if the params is not valid', done => {
+            const result = new UserController().list("Hello, world!").catch(() => {
+            });
+
+            assert.throws(() => {
+                throw new Error();
+            }, result);
             done();
         });
     });
@@ -130,6 +178,16 @@ describe("USER CONTROLLER TEST", () => {
             should(detailUser).have.property("phone").which.is.a.String();
             done();
         });
+
+        it('should throws NotFoundException if the data couldn\'t be found', done => {
+            const result = new UserController().detail("5b86bf18eca66b4253989d2c").catch(() => {
+            });
+
+            assert.throws(() => {
+                throw new NotFoundException("The data you're looking for couldn't be found!");
+            }, result);
+            done();
+        });
     });
 
     describe("Remove user data", () => {
@@ -144,6 +202,16 @@ describe("USER CONTROLLER TEST", () => {
 
         it('should return "Successfully remove user data!" message as a string', done => {
             should(result).deepEqual("Successfully remove user data!").which.is.a.String();
+            done();
+        });
+
+        it('should throws NotFoundException if the data couldn\'t be found', done => {
+            const result = new UserController().remove("5b86bf18eca66b4253989d2c").catch(() => {
+            });
+
+            assert.throws(() => {
+                throw new NotFoundException("The data you're looking for couldn't be found!");
+            }, result);
             done();
         });
     });

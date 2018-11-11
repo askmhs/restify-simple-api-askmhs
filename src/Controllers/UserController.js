@@ -3,8 +3,8 @@ import {NotFoundException} from "./../Exceptions/NotFoundException";
 
 export class UserController {
 
-    async list() {
-        return User.find().lean().then(users => {
+    async list(params = {}) {
+        return User.find(params).lean().then(users => {
             return users;
         }).catch(error => {
             throw error;
