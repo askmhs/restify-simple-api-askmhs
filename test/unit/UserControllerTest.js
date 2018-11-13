@@ -72,7 +72,7 @@ describe("USER CONTROLLER TEST", () => {
             });
 
             assert.throws(() => {
-                throw new Error("User validation failed: name: Path `name` is required.");
+                throw new Error("User validation failed: phone: Path `phone` is required.");
             }, result);
 
             done();
