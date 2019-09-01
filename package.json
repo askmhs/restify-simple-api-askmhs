@@ -10,21 +10,21 @@
   "author": "Muhammad Harits Syaifulloh",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^6.1.0",
-    "mongoose": "^5.3.3",
-    "restify": "^7.2.1"
+    "dotenv": "^8.1.0",
+    "mongoose": "^5.6.11",
+    "restify": "^8.4.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
-    "@babel/core": "^7.1.5",
-    "@babel/node": "^7.0.0",
-    "@babel/preset-env": "^7.1.5",
-    "@babel/register": "^7.0.0",
-    "babel-plugin-istanbul": "^5.1.0",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "babel-plugin-istanbul": "^5.2.0",
     "chai": "^4.2.0",
-    "cross-env": "^5.2.0",
-    "mocha": "^5.2.0",
-    "nyc": "^13.1.0",
+    "cross-env": "^5.2.1",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
     "should": "^13.2.3"
   },
   "nyc": {
