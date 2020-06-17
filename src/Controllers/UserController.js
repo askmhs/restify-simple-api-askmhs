@@ -1,3 +1,4 @@
+import {UploadImage} from "./../Services/UploadImage";
 import User from "./../Models/User.model";
 import {NotFoundException} from "./../Exceptions/NotFoundException";
 
@@ -32,6 +33,7 @@ export class UserController {
     }
 
     async update(id, data) {
+
         return User.findOneAndUpdate({
             _id: id
         }, {

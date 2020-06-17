@@ -39,7 +39,7 @@ module.exports = server => {
      */
     server.del('/user/:userId', async (req, res) => {
         try {
-            const result = await new UserController().remove(req.params.userId);
+            await new UserController().remove(req.params.userId);
             SuccessResponse(res, "Successfully remove user!", null);
         } catch(exception) {
             if (exception instanceof NotFoundException) {

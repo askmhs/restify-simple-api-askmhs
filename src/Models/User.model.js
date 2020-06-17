@@ -12,7 +12,12 @@ const user = new mongoose.Schema({
     phone: {
         type: String,
         required: true
-    }
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    profile_image: String
 }, {
     timestamps: true
 });

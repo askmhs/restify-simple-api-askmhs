@@ -27,7 +27,8 @@ require('dotenv').config();
  */
 mongoose.set('useFindAndModify', false);
 mongoose.connect(process.env.DB_HOST, {
-	useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 }).then(() => {
     console.log("Successfully connected to DB!");
 }, err => {
